@@ -19,4 +19,16 @@ public class Book
     public string Category { get; set; }
 
     public bool Available { get; set; }
+
+    public Book (BigInteger id, string title, string author, string isbn, string category, bool available)
+    {
+        Id = id;
+        Title = title;
+        Author = author;
+        Isbn = isbn;
+        Category = category;
+        Available = available;
+    }
+
+    
 }
