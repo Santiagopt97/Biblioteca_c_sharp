@@ -1,7 +1,21 @@
+using Biblioteca_c_sharp.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<LibraryDbContext>(options =>
+
+    options.UseMySql(
+        //configuracion la cadena de conexion
+        builder.Configuration.GetConnectionString("Library"),
+        // llamamos a la clase que corresponde en este caso que es MySqlServerVersion y le pasamos la version
+        new MySqlServerVersion(new Version(8, 0, 21)) 
+    )
+);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
 
 var app = builder.Build();
 
