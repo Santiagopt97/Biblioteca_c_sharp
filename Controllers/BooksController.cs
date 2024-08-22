@@ -20,7 +20,7 @@ namespace Biblioteca_c_sharp.Controllers
         public BooksController(LibraryDbContext _context)
         {
             context = _context;
-        } 
+        }
 
 
         // public BooksController(ILogger<BooksController> logger)
@@ -40,7 +40,7 @@ namespace Biblioteca_c_sharp.Controllers
         }
 
         // GET: Eliminar libro 
-        public async Task<IActionResult> delete (int id)
+        public async Task<IActionResult> delete(int id)
         {
             var Book = await context.Books.FirstAsync(a => a.Id == id);
             context.Books.Remove(Book);
@@ -49,7 +49,7 @@ namespace Biblioteca_c_sharp.Controllers
         }
 
 
-        public async Task<IActionResult> ShowBook (int id)
+        public async Task<IActionResult> ShowBook(int id)
         {
             var Book = await context.Books.FirstOrDefaultAsync(a => a.Id == id);
             return View(Book);
@@ -75,6 +75,59 @@ namespace Biblioteca_c_sharp.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(book);
+        }
+
+
+        // GET: Editar libro
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var book = await context.Books.FindAsync(id);
+            if (book == null)
+            {
+                return NotFound();
+            }
+            return View(book);
+        }
+
+        // POST: Editar libro
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(long id, [Bind("Id,Title,Author,Isbn,Category,Available")] Book book)
+        {
+            if (id != book.Id)
+            {
+                return NotFound();
+            }
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    context.Update(book);
+                    await context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!BookExists(book.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(book);
+        }
+        
+        private bool BookExists(long id)
+        {
+            return context.Books.Any(e => e.Id == id);
         }
     }
 }
