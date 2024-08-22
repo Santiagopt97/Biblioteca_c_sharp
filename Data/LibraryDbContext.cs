@@ -20,5 +20,7 @@ namespace Biblioteca_c_sharp.Data
         // una colección de entidades en la base de datos. Cada DbSet<T> se mapea a una tabla
         //  en la base de datos y te permite realizar operaciones
         //  como consultas, inserciones, actualizaciones y eliminaciones en esa tabla.
+
+        public DbSet<User> Users { get; set; }
     }
 }

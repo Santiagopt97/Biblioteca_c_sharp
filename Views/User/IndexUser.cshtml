@@ -1,0 +1,53 @@
+@model IEnumerable<Biblioteca_c_sharp.Models.User>
+
+<style>
+    body {
+        background: linear-gradient(to right, #ff7e5f, #b6855f);
+    }
+</style>
+
+<div class="text-center">
+    <div>
+        <h1 class="display-4">List of all User in the Library</h1>
+        <h2>User List</h2>
+        <a asp-action="Create">Create New</a>
+
+        <form class="form-inline my-2 my-lg-0 d-flex">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Document Number</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Contact Number</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Document_Number</td>
+                        <td>@item.Name</td>
+                        <td>@item.Address</td>
+                        <td>@item.Contact_Number</td>
+                        <td>
+                            <a class="btn btn-success" asp-controller="User" asp-action="Edit"
+                                asp-route-id="@item.Id">Edit</a>
+                            <a class="btn btn-danger" asp-controller="User" asp-action="Delete"
+                                asp-route-id="@item.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
