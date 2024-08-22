@@ -11,25 +11,22 @@ public class User
     [Key]
     public BigInteger Id { get; set; }
 
-    public string Title { get; set; }
+    public string Document_Number { get; set; }
 
-    public string Author { get; set; }
-
-    public string Isbn { get; set; }
-
-    public string Category { get; set; }
+    public string Name { get; set; }
 
     [Required]
+    public string Address { get; set; }
 
-    public bool Available { get; set; }
+    [Required]
+    public string Contact_Number { get; set; }
 
-    public User(BigInteger id, string title, string author, string isbn, string category, bool available)
+    public User(BigInteger id, string document_Number, string name, string address, string contact_Number)
     {
         Id = id;
-        Title = title;
-        Author = author;
-        Isbn = isbn;
-        Category = category;
-        Available = available;
+        Document_Number = document_Number;
+        Name = name;
+        Address = address;
+        Contact_Number = contact_Number;
     }
 }
