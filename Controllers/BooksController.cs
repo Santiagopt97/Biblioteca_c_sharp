@@ -49,7 +49,7 @@ namespace Biblioteca_c_sharp.Controllers
         }
 
         // GET: Crear libro
-
+        [Route("Books/Create")]
         public IActionResult Create()
         {
             return View();
