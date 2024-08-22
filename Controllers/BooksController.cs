@@ -1,9 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO.Compression;
 using System.Linq;
 using System.Threading.Tasks;
+using Biblioteca_c_sharp.Data;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 namespace Biblioteca_c_sharp.Controllers
@@ -11,12 +14,18 @@ namespace Biblioteca_c_sharp.Controllers
     [Route("[controller]")]
     public class BooksController : Controller
     {
-        private readonly ILogger<BooksController> _logger;
+        private readonly LibraryDbContext context;
 
-        public BooksController(ILogger<BooksController> logger)
+        public BooksController(LibraryDbContext _context)
         {
-            _logger = logger;
-        }
+            context = _context;
+        } 
+
+
+        // public BooksController(ILogger<BooksController> logger)
+        // {
+        //     _logger = logger;
+        // }
 
         public IActionResult Index()
         {
@@ -27,6 +36,14 @@ namespace Biblioteca_c_sharp.Controllers
         public IActionResult Error()
         {
             return View("Error!");
+        }
+
+        public async Task<IActionResult> delete (int id)
+        {
+            var Book = await context.Books.FirstAsync(a => a.Id == id);
+            context.Books.Remove(Book);
+            await context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
     }
 }
