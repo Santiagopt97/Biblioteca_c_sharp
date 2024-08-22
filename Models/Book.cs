@@ -20,8 +20,7 @@ public class Book
 
     public string Category { get; set; }
 
-    [Required]    
-
+    [Required]
     public bool Available { get; set; }
 
     public Book (BigInteger id, string title, string author, string isbn, string category, bool available)
