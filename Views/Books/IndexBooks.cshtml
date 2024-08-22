@@ -1,0 +1,44 @@
+@model IEnumerable<Biblioteca_c_sharp.Models.Book>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1>Libros</h1>
+
+
+<ul>
+    <li><a asp-action="Create">Create New</a></li>
+    <li><a asp-action="Index">Back to List</a></li>
+</ul>
+
+@*imprimir los libros en una tabla*@
+
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>ISBN</th>
+            <th>Category</th>
+            <th>Available</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Title</td>
+                <td>@item.Author</td>
+                <td>@item.Isbn</td>
+                <td>@item.Category</td>
+                <td>@item.Available</td>
+                <td>
+                    <a class="btn btn-success" asp-controller="Books" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                    <a class="btn btn-danger" asp-controller="Books" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+
+        }
+</table>

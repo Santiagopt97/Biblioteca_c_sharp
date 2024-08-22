@@ -126,6 +126,13 @@ namespace Biblioteca_c_sharp.Controllers
             return View(book);
         }
 
+        // para ir al index de Books
+        [Route("Books/IndexBooks")]
+        public IActionResult IndexBooks()
+        {
+            return View(context.Books.ToList());
+        }
+
         private bool BookExists(long id)
         {
             return context.Books.Any(e => e.Id == id);
