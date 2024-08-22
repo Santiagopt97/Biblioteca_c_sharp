@@ -1,4 +1,4 @@
-@model IEnumerable<JobWebApp.Models.Job>
+@model IEnumerable<Biblioteca_c_sharp.Models.User>
 
 <h2>User List</h2>
 <a asp-action="Create">Create New</a>
@@ -17,8 +17,8 @@
                 <td>@item.Id</td>
                 <td>@item.Name</td>
                 <td>
-                    <a class="nav-link text-dark" asp-area="" asp-controller="Job" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    <a class="btn btn-success" asp-controller="User" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                    <a class="btn btn-danger" asp-controller="User" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                 </td>
             </tr>
         }
