@@ -4,8 +4,8 @@
 
 <div class="text-center">
     <div>
-        <h1 class="display-4">Discover Your Dream Job with Us</h1>
-        <p>Empowering Careers, One Job at a Time.</p>
+        <h1 class="display-4">List of all User in the Library</h1>
+        <p>The place where all of us meet.</p>
 
         <form class="form-inline my-2 my-lg-0 d-flex">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -23,17 +23,17 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model)
+                @* @foreach (var item in Model)
                     {
                         <tr>
                             <td>@item.Id</td>
                             <td>@item.Name</td>
                             <td>
-                                <a class="btn btn-success" asp-controller="Job" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
-                                <a class="btn btn-danger" asp-controller="Job" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                                <a class="btn btn-success" asp-controller="User" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                                <a class="btn btn-danger" asp-controller="User" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                             </td>
                         </tr>
-                    }
+                    } *@
             </tbody>
         </table>
     </div>
