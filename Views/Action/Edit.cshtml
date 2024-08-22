@@ -1,15 +1,43 @@
 @model Biblioteca_c_sharp.Models.User
 
 @{
-    ViewData["Title"] = "Edit Job";
+    ViewData["Title"] = "Edit User";
 }
-<h2>Edit Job</h2>
+
+<h2>Edit User</h2>
 
 <form asp-action="Edit">
     <input type="hidden" asp-for="Id" />
-        <div>
-            <label asp-for="Name"></label>
-            <input asp-for="Name" />
-        </div>
-    <input type="submit" value="Save" />
+
+    <div class="form-group">
+        <label asp-for="Document_Number" class="control-label"></label>
+        <input asp-for="Document_Number" class="form-control" />
+        <span asp-validation-for="Document_Number" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Name" class="control-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Address" class="control-label"></label>
+        <input asp-for="Address" class="form-control" />
+        <span asp-validation-for="Address" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Contact_Number" class="control-label"></label>
+        <input asp-for="Contact_Number" class="form-control" />
+        <span asp-validation-for="Contact_Number" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-primary" />
+    </div>
 </form>
+
+<div>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>
