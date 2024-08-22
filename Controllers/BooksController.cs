@@ -79,7 +79,8 @@ namespace Biblioteca_c_sharp.Controllers
 
 
         // GET: Editar libro
-        public async Task<IActionResult> Edit(int? id)
+        [Route("editar/{id}")]
+        public async Task<IActionResult> Edit(long? id)
         {
             if (id == null)
             {
@@ -124,7 +125,7 @@ namespace Biblioteca_c_sharp.Controllers
             }
             return View(book);
         }
-        
+
         private bool BookExists(long id)
         {
             return context.Books.Any(e => e.Id == id);
