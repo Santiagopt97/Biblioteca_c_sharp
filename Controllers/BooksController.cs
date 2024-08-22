@@ -45,5 +45,11 @@ namespace Biblioteca_c_sharp.Controllers
             await context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+
+        public async Task<IActionResult> ShowBook (int id)
+        {
+            var Book = await context.Books.FirstOrDefaultAsync(a => a.Id == id);
+            return View(Book);
+        }
     }
 }
