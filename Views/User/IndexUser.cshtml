@@ -1,4 +1,5 @@
-@model IEnumerable<Biblioteca_c_sharp.Models.User>
+@using Biblioteca_c_sharp.Models
+@model IEnumerable<User>
 
 <style>
     body {
@@ -19,35 +20,42 @@
     </div>
 
     <div>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Document Number</th>
-                    <th>Name</th>
-                    <th>Address</th>
-                    <th>Contact Number</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
+        @if (Model != null && Model.Any())
+        {
+            <table class="table">
+                <thead>
                     <tr>
-                        <td>@item.Id</td>
-                        <td>@item.Document_Number</td>
-                        <td>@item.Name</td>
-                        <td>@item.Address</td>
-                        <td>@item.Contact_Number</td>
-                        <td>
-                            <a class="btn btn-success" asp-controller="User" asp-action="Edit"
-                                asp-route-id="@item.Id">Edit</a>
-                            <a class="btn btn-danger" asp-controller="User" asp-action="Delete"
-                                asp-route-id="@item.Id">Delete</a>
-                        </td>
+                        <th>ID</th>
+                        <th>Document Number</th>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Contact Number</th>
+                        <th>Actions</th>
                     </tr>
-                }
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>@item.Document_Number</td>
+                            <td>@item.Name</td>
+                            <td>@item.Address</td>
+                            <td>@item.Contact_Number</td>
+                            <td>
+                                <a class="btn btn-success" asp-controller="User" asp-action="Edit"
+                                    asp-route-id="@item.Id">Edit</a>
+                                <a class="btn btn-danger" asp-controller="User" asp-action="Delete"
+                                    asp-route-id="@item.Id">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p>No users found.</p>
+        }
     </div>
 </div>
