@@ -14,21 +14,23 @@
 
 @*imprimir los libros en una tabla*@
 
-<table>
+<table class="table">
     <thead>
         <tr>
+            <th>ID</th>
             <th>Title</th>
             <th>Author</th>
             <th>ISBN</th>
             <th>Category</th>
             <th>Available</th>
-            <th></th>
+            <th>CRUD</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
             <tr>
+                <td>@item.Id</td>
                 <td>@item.Title</td>
                 <td>@item.Author</td>
                 <td>@item.Isbn</td>
@@ -39,6 +41,5 @@
                     <a class="btn btn-danger" asp-controller="Books" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                 </td>
             </tr>
-
         }
 </table>

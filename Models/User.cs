@@ -9,7 +9,7 @@ namespace Biblioteca_c_sharp.Models;
 public class User
 {
     [Key]
-    public BigInteger Id { get; set; }
+    public long Id { get; set; }
 
     public string Document_Number { get; set; }
 
@@ -21,7 +21,7 @@ public class User
     [Required]
     public string Contact_Number { get; set; }
 
-    public User(BigInteger id, string document_Number, string name, string address, string contact_Number)
+    public User(long id, string document_Number, string name, string address, string contact_Number)
     {
         Id = id;
         Document_Number = document_Number;

@@ -70,9 +70,17 @@ namespace Biblioteca_c_sharp.Controllers
         {
             if (ModelState.IsValid)
             {
-                context.Add(book);
-                await context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+
+                try
+                {
+                    context.Add(book);
+                    await context.SaveChangesAsync();
+                }
+                catch (DbUpdateException)
+                {
+                    // Agrega un punto de depuración aquí para ver la excepción
+                    throw;
+                }
             }
             return View(book);
         }
