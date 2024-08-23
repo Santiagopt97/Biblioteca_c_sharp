@@ -7,11 +7,11 @@
         <h1 class="display-4">Welcome to Riwi's Library</h1>
         <p>The place where books are adventures.</p>
 
-        @*link al archivo Index.cshtml en views/Books 
+        <div>
+            <a href="@Url.Action("IndexBooks", "Books")">Pagina de libros</a>
+        </div>
 
-        <a href="@Url.Action("IndexBooks", "Books")">asd</a>*@
-        
-        
+
 
         <form class="form-inline my-2 my-lg-0 d-flex">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
